@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    /* Deep Space Medical Theme */
+    --bg-dark: #050511;
+    --bg-card: rgba(13, 18, 30, 0.75);
+    --accent-primary: #00f2ea;
+    /* Cyan Neon */
+    --accent-secondary: #ff0055;
+    /* Radical Red */
+    --accent-tertiary: #7000ff;
+    /* Electric Violet */
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-highlight: rgba(255, 255, 255, 0.05);
+    --success: #00ff9d;
+    --error: #ff3366;
+}
+
+[data-theme='light'] {
+    --bg-dark: #f0f4f8;
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --accent-primary: #2563eb;
+    --accent-secondary: #db2777;
+    --accent-tertiary: #7c3aed;
+    --text-primary: #0f172a;
+    --text-secondary: #64748b;
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --glass-highlight: rgba(255, 255, 255, 0.8);
+}
+
+@layer base {
+    * {
+        @apply border-[VAR(--glass-border)] selection:bg-[var(--accent-primary)] selection:text-black;
+    }
+
+    body {
+        @apply bg-[var(--bg-dark)] text-[var(--text-primary)] font-['Inter'] antialiased transition-colors duration-700 ease-out;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-['Outfit'] tracking-tight;
+    }
+}
+
+@layer components {
+    .glass-card {
+        @apply bg-[var(--bg-card)] backdrop-blur-2xl border border-[var(--glass-border)] rounded-[2.5rem];
+        box-shadow: 0 0 0 1px var(--glass-highlight) inset, 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    .glass-card-hover {
+        @apply transition-all duration-500;
+    }
+
+    .glass-card-hover:hover {
+        background-color: rgba(255, 255, 255, 0.03);
+        border-color: var(--accent-primary);
+        box-shadow: 0 0 20px rgba(0, 242, 234, 0.15);
+    }
+
+    .btn-primary {
+        @apply relative overflow-hidden text-black font-extrabold py-4 px-10 rounded-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wider text-sm;
+        background-image: linear-gradient(to right, var(--accent-primary), var(--accent-tertiary), var(--accent-secondary));
+        background-size: 200% auto;
+        box-shadow: 0 0 20px rgba(0, 242, 234, 0.3);
+        animation: shine 4s linear infinite;
+    }
+
+    .btn-primary:hover {
+        box-shadow: 0 0 40px rgba(0, 242, 234, 0.5);
+        transform: scale(1.03);
+    }
+
+    .btn-primary:active {
+        transform: scale(0.98);
+    }
+
+    .input-field {
+        @apply w-full bg-slate-950/40 border border-[var(--glass-border)] rounded-2xl px-6 py-5 focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-transparent outline-none transition-all duration-300 placeholder:text-slate-600 text-lg backdrop-blur-sm;
+    }
+
+    @keyframes shine {
+        to {
+            background-position: 200% center;
+        }
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-slate-800/80 rounded-full hover:bg-[var(--accent-primary)];
+}
+
+/* Enhanced Background Animated Gradient Mesh */
+.bg-mesh {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background-color: var(--bg-dark);
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.mesh-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.25;
+    animation: float-mesh 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+    mix-blend-mode: screen;
+}
+
+@keyframes float-mesh {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(10%, -10%) scale(1.1) rotate(15deg);
+    }
+}
+
+.mesh-circle-1 {
+    width: 900px;
+    height: 900px;
+    background: radial-gradient(circle, var(--accent-primary), transparent 70%);
+    top: -30%;
+    left: -20%;
+    animation-duration: 45s;
+    animation-direction: alternate-reverse;
+}
+
+.mesh-circle-2 {
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, var(--accent-secondary), transparent 70%);
+    bottom: -20%;
+    right: -10%;
+    animation-duration: 38s;
+}
+
+.mesh-circle-3 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--accent-tertiary), transparent 70%);
+    top: 40%;
+    right: 30%;
+    animation-duration: 52s;
+    animation-delay: -5s;
+    opacity: 0.15;
+}
+
+.mesh-circle-4 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, #4361ee, transparent 70%);
+    bottom: 10%;
+    left: 10%;
+    animation-duration: 42s;
+    animation-delay: -12s;
+}
+
+/* Premium Text Gradients */
+.text-gradient-premium {
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-primary) 50%, var(--accent-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: shine 8s linear infinite reverse;
+}
