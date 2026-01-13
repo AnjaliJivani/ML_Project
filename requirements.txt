@@ -7,13 +7,3 @@ scikit-learn
 streamlit
 matplotlib
 seaborn
-axios
-chart.js
-framer-motion
-lucide-react
-tailwind-merge
-clsx
-canvas-confetti
-lottie-react
-howler
-react-chartjs-2
